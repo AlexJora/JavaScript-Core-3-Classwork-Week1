@@ -1,4 +1,6 @@
-document.addEventListener("DOMContentLoaded", ( ) => {
+
+
+document.addEventListener("DOMContentLoaded", () => {
 	var data = [
 		{
 			text: 'Overshadowing #UNGA is the big question: Will Obama and Rouhani meet?',
@@ -21,23 +23,26 @@ document.addEventListener("DOMContentLoaded", ( ) => {
 			href: 'http://twitter.com'
 		}
 	];
-	for (var i = 0; i<data.length; i++) {
-		if (data.text) {
+	for (var i = 0; i < data.length; i++) {
+		if (data[i].text) {
 			const pElement = document.createElement("p");
 			const button = document.createElement("button");
 			button.type = "button"
 			button.classList.add(["btn", "btn-default"]);
 			button.setAttribute('data-href', data.href);
-			button.innerText = data.text;
+			button.innerText = data[i].text;
 			pElement.appendChild(button);
-			document.querySelector('#news').appendChild(pElement);		
+			document.querySelector('#news').appendChild(pElement);
 		}
 	}
-	const buttons = document.querySelectorAll("button");
+	var buttons = document.querySelectorAll("button");
 
-	buttons.forEach(el => el.addEventListener('click', evt => {		
-		const ctrl = evt.target;
+	buttons.forEach(el => el.addEventListener('click', evt => {
+		let ctrl = evt.target;
 		if (!ctrl.getAttribute('data-href')) {
 			document.location = ctrl.getAttribute('data-href');
-		}}))
-	})
+		}
+
+
+	}))
+});

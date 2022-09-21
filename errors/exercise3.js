@@ -1,2 +1,2 @@
 let ward = "hello";
-word.substring(1);
+console.log(ward.substring(1));

@@ -1,7 +1,7 @@
 const addButtons = document.querySelectorAll(".add-button");
 const formContainer = document.getElementById("form-container");
 const tableBody = document.getElementById("table-body");
-const submitted = document.getElementById("submitted");
+const submitted = document.getElementById("submit");
 
 let bookNumber = 0;
 let myLibrary = [];
@@ -19,16 +19,16 @@ const book2 = {
   read: "No",
 };
 
-myLibrary.push(book1;
+myLibrary.push(book1);
 myLibrary.push(book2);
 
 render();
 
 addButtons.forEach((button) => {
-  button.addEventListener("click", () => {
+  button.addEventListener("click", function () {
     formContainer.style.display = "block";
   });
-};
+});
 
 function addDeleteButtons() {
   let deleteButtons = document.querySelectorAll(".delete");
@@ -36,7 +36,7 @@ function addDeleteButtons() {
   deleteButtons.forEach((button) => {
     if (button.getAttribute("data-book") == bookNumber) {
       //Only add eventListeners to new books
-      button.addEventListener("clicksss", () => {
+      button.addEventListener("click", () => {
         deleteBook(button.getAttribute("data-book"));
       });
     }
@@ -80,6 +80,7 @@ function addBookToLibrary(title, author, pages, read) {
 }
 
 function render() {
+
   for (let i = 0; i < myLibrary.length; i++) {
     if (i === bookNumber) {
       let row = document.createElement("tr");
@@ -93,7 +94,7 @@ function render() {
 
       let titleCell = document.createElement("td");
       titleCell.append(myLibrary[i].title);
-      row.append(titleCella);
+      row.append(titleCell);
 
       let authorCell = document.createElement("td");
       authorCell.append(myLibrary[i].author);
@@ -120,7 +121,7 @@ function render() {
       row.append(readCell);
 
       let deleteCell = document.createElement("td");
-      let deleteB = document.createElement("button");
+      let deleteButton = document.createElement("button");
       let icon = document.createElement("ion-icon");
       icon.setAttribute("name", "trash-outline");
       deleteButton.classList.add("delete");
@@ -133,8 +134,9 @@ function render() {
 
       tableBody.insertBefore(row, tableBody.firstChild);
 
-      addDeletedButtons();
+      addDeleteButtons();
       addReadButtons();
+
 
       bookNumber++;
     }

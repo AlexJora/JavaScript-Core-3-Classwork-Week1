@@ -1,2 +1,2 @@
-let name;
-name.substring(1);
+let name = 'Anna';
+console.log(name.substring(1));
